@@ -1,5 +1,6 @@
 package com.example.calculadoraimc
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -11,25 +12,20 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-
-        val btnCalculadoraApp = findViewById<Button>(R.id.btn1)
-        val btnImcApp = findViewById<Button>(R.id.btn2)
-
-        btnCalculadoraApp.setOnClickListener { navigateToCalculadoraApp() }
-        btnImcApp.setOnClickListener { navigateToImcApp() }
+        setContentView(R.layout.activity_menu)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val btnImcApp = findViewById<Button>(R.id.btn2)
+        btnImcApp.setOnClickListener { navigateToImcApp() }
     }
 
-    private fun navigateToImcApp(){
-
-    }
-    private fun navigateToCalculadoraApp() {
-        TODO("Not yet implemented")
+    private fun navigateToImcApp() {
+        startActivity(Intent(this, ImcCalculatorActivity::class.java))
     }
 }
+
